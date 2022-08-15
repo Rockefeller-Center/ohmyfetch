@@ -45,14 +45,14 @@ export interface FetchOptions<R extends ResponseType = ResponseType>
     response?: boolean;
     retry?: number | false;
 
-    onRequest?(ctx: FetchContext): Promise<void>;
-    onRequestError?(ctx: FetchContext & { error: Error }): Promise<void>;
+    onRequest?(ctx: FetchContext): void | Promise<void>;
+    onRequestError?(ctx: FetchContext & { error: Error }): void | Promise<void>;
     onResponse?(
         ctx: FetchContext & { response: FetchResponse<R> },
-    ): Promise<void>;
+    ): void | Promise<void>;
     onResponseError?(
         ctx: FetchContext & { response: FetchResponse<R> },
-    ): Promise<void>;
+    ): void | Promise<void>;
 }
 
 export interface $Fetch {
